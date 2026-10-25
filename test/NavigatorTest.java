@@ -1,5 +1,3 @@
-package com.aitu.navigation;
-
 public final class NavigatorTest {
     public static void main(String[] args) {
         RouteRequest request = new RouteRequest("A", "B", 12.0);

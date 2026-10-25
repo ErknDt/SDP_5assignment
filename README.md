@@ -13,7 +13,7 @@ This is a **teaching simulation**, not a real map routing engine. The client sup
 ## Structure
 
 ```text
-src/main/java/com/aitu/navigation/
+src/
   RouteRequest.java
   RoutePlan.java
   RouteStrategy.java
@@ -22,7 +22,7 @@ src/main/java/com/aitu/navigation/
   CycleStrategy.java
   Navigator.java
   Main.java
-src/test/java/com/aitu/navigation/
+test/
   NavigatorTest.java
 README.md
 .gitignore
@@ -33,12 +33,14 @@ README.md
 Requires JDK 17 or newer.
 
 ```bash
-javac --release 17 -d out src/main/java/com/aitu/navigation/*.java src/test/java/com/aitu/navigation/*.java
-java -cp out com.aitu.navigation.Main
-java -cp out com.aitu.navigation.NavigatorTest
+New-Item -ItemType Directory -Force out | Out-Null
+$javaFiles = @(Get-ChildItem .\src\*.java) + @(Get-ChildItem .\test\*.java)
+javac --release 17 -d out $javaFiles.FullName
+java -cp out Main
+java -cp out NavigatorTest
 ```
 
-In IntelliJ IDEA, open the folder as a project, set Project SDK to 17 or newer, mark `src/main/java` as Sources Root (if needed), and run `com.aitu.navigation.Main`.
+In IntelliJ IDEA, open the folder as a project, set Project SDK to 17 or newer, mark src as Sources Root and test as Test Sources Root if needed, and run Main.
 
 ## Expected output
 
